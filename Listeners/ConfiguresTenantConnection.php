@@ -15,13 +15,13 @@
 namespace Tenancy\Database\Drivers\Mysql\Listeners;
 
 use Tenancy\Database\Contracts\ProvidesDatabase;
-use Tenancy\Database\Drivers\Mysql\Driver\Mysql;
+use Tenancy\Database\Drivers\Mysql\Driver\Sqlite;
 use Tenancy\Database\Events\Resolving;
 
 class ConfiguresTenantConnection
 {
     public function handle(Resolving $resolving): ?ProvidesDatabase
     {
-        return new Mysql();
+        return new Sqlite();
     }
 }
