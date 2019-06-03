@@ -15,9 +15,9 @@
 namespace Tenancy\Database\Drivers\Mysql\Providers;
 
 use Tenancy\Database\Drivers\Mysql\Listeners\ConfiguresTenantConnection;
-use Tenancy\Support\DatabaseProvider as Provider;
+use Tenancy\Support\DatabaseProvider;
 
-class DatabaseProvider extends Provider
+class ServiceProvider extends DatabaseProvider
 {
     protected $listener = ConfiguresTenantConnection::class;
 }
