@@ -12,12 +12,12 @@
  * @see https://github.com/tenancy
  */
 
-namespace Tenancy\Database\Drivers\Mysql\Providers;
+namespace Tenancy\Database\Drivers\Mysql;
 
 use Tenancy\Database\Drivers\Mysql\Listeners\ConfiguresTenantConnection;
 use Tenancy\Support\DatabaseProvider;
 
-class ServiceProvider extends DatabaseProvider
+class Provider extends DatabaseProvider
 {
     protected $listener = ConfiguresTenantConnection::class;
 }
