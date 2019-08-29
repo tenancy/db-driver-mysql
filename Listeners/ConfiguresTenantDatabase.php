@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * This file is part of the tenancy/tenancy package.
  *
- * Copyright Laravel Tenancy & Daniël Klabbers <daniel@klabbers.email>
+ * Copyright Tenancy for Laravel & Daniël Klabbers <daniel@klabbers.email>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -16,11 +16,11 @@ declare(strict_types=1);
 
 namespace Tenancy\Database\Drivers\Mysql\Listeners;
 
-use Tenancy\Database\Contracts\ProvidesDatabase;
 use Tenancy\Database\Drivers\Mysql\Driver\Mysql;
-use Tenancy\Database\Events\Resolving;
+use Tenancy\Hooks\Database\Contracts\ProvidesDatabase;
+use Tenancy\Hooks\Database\Events\Resolving;
 
-class ConfiguresTenantConnection
+class ConfiguresTenantDatabase
 {
     public function handle(Resolving $resolving): ?ProvidesDatabase
     {
