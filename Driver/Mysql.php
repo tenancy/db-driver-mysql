@@ -54,7 +54,7 @@ class Mysql implements ProvidesDatabase
         $result = $this->queryManager->setConnection($this->system($tenant))
             ->process(function () use ($config) {
                 $this->statement("CREATE USER IF NOT EXISTS `{$config['username']}`@'{$config['host']}' IDENTIFIED BY '{$config['password']}'");
-                $this->statement("CREATE DATABASE `{$config['database']}`");
+                $this->statement("CREATE DATABASE IF NOT EXISTS `{$config['database']}`");
                 $this->statement("GRANT ALL ON `{$config['database']}`.* TO `{$config['username']}`@'{$config['host']}'");
             })
             ->getStatus();
@@ -80,7 +80,7 @@ class Mysql implements ProvidesDatabase
             ->process(function () use ($config, $tables) {
                 $this->statement("RENAME USER `{$config['oldUsername']}`@'{$config['host']}' TO `{$config['username']}`@'{$config['host']}'");
                 $this->statement("ALTER USER `{$config['username']}`@`{$config['host']}` IDENTIFIED BY '{$config['password']}'");
-                $this->statement("CREATE DATABASE `{$config['database']}`");
+                $this->statement("CREATE DATABASE IF NOT EXISTS `{$config['database']}`");
                 $this->statement("GRANT ALL ON `{$config['database']}`.* TO `{$config['username']}`@'{$config['host']}'");
 
                 foreach ($tables as $table) {
